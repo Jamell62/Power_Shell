@@ -12,7 +12,7 @@ sudo apt-get install -y wget apt-transport-https software-properties-common
 . /etc/os-release
 # VERSION_ID queda cargado automáticamente
 
-# Descargar paquete de repositorio de Microsoft
+# Descargar paquete del repositorio de Microsoft
 wget https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb
 
 # Registrar la clave GPG y el repositorio
@@ -31,7 +31,9 @@ sudo apt-get update
 
 sudo apt-get install -y powershell
 
+
 ###################################
 # 3. Iniciar PowerShell
 ###################################
+
 pwsh

@@ -1,36 +1,37 @@
 ###################################
-# Prerequisites                   # Prerrequisitos
+# 1. Prerrequisitos
 ###################################
 
-# Update the list of packages
-sudo apt-get update               # Actualiza la lista de paquetes disponibles en los repositorios
+# Actualizar lista de paquetes
+sudo apt-get update
 
-# Install pre-requisite packages.
-sudo apt-get install -y wget apt-transport-https software-properties-common  
-# Instala paquetes necesarios: wget (descargas), apt-transport-https (repos HTTPS), software-properties-common (gestión de repos)
+# Instalar dependencias necesarias
+sudo apt-get install -y wget apt-transport-https software-properties-common
 
-# Get the version of Ubuntu
-source /etc/os-release            # Carga variables del sistema, incluyendo VERSION_ID (versión de Ubuntu)
+# Obtener versión de Ubuntu
+. /etc/os-release
+# VERSION_ID queda cargado automáticamente
 
-# Download the Microsoft repository keys
-wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb 
-# Descarga silenciosamente (.deb) las claves y configuraciones del repositorio oficial de Microsoft para tu versión de Ubuntu
+# Descargar paquete de repositorio de Microsoft
+wget https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb
 
-# Register the Microsoft repository keys
-sudo dpkg -i packages-microsoft-prod.deb  
-# Instala el paquete que registra la clave GPG y el repositorio de Microsoft en tu sistema
+# Registrar la clave GPG y el repositorio
+sudo dpkg -i packages-microsoft-prod.deb
 
-# Delete the Microsoft repository keys file
-rm packages-microsoft-prod.deb    # Elimina el archivo .deb descargado, ya no es necesario
+# Eliminar el archivo descargado
+rm packages-microsoft-prod.deb
 
-# Update the list of packages after we added packages.microsoft.com
-sudo apt-get update               # Actualiza nuevamente la lista de paquetes, ahora incluyendo el repositorio de Microsoft
+# Actualizar lista de paquetes (ya con el repo Microsoft agregado)
+sudo apt-get update
 
 
 ###################################
-# Install PowerShell
+# 2. Instalar PowerShell
 ###################################
-sudo apt-get install -y powershell    # Instala PowerShell desde el repositorio de Microsoft
 
-# Start PowerShell
-pwsh                                   # Inicia PowerShell (su ejecutable es 'pwsh')
+sudo apt-get install -y powershell
+
+###################################
+# 3. Iniciar PowerShell
+###################################
+pwsh
